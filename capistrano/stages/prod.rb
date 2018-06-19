@@ -20,7 +20,6 @@ namespace :system do
             execute :rm, "-f .gitignore"
             execute :rm, "-f Capfile"
             execute :rm, "-rf capistrano"
-            execute "php #{shared_path}/composer.phar update "
         end
       end
     end    
@@ -41,9 +40,18 @@ namespace :system do
         end
       end
     end
+    desc "Composer install2 "
+    task :composer_install2 do
+      on roles(:app) do
+        within release_path  do
+            execute:php "#{shared_path}/composer.phar update "
+        end
+      end
+    end
 
 end
 
 after "deploy:check:directories", "system:install_composer"
 after "system:install_composer", "system:composer_install"
+after "system:composer_install", "system:composer_install2"
 before "system:install_composer", "system:cleanup"
