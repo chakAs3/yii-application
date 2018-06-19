@@ -12,7 +12,7 @@ set :application, 'yii-application'
 set :repo_url, 'https://github.com/chakAs3/yii-application.git'
 
 # Define where to put your application code
-set :deploy_to, "/var/www/my_app"
+set :deploy_to, "/var/www"
 
 set :pty, true
 
