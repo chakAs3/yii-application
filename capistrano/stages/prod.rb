@@ -20,7 +20,7 @@ namespace :system do
             execute :rm, "-f .gitignore"
             execute :rm, "-f Capfile"
             execute :rm, "-rf capistrano"
-            execute :cd, "var/www/html/current"
+            execute :cd, "/var/www/html/current"
             execute "php #{shared_path}/composer.phar update "
         end
       end
