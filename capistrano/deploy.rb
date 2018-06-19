@@ -8,7 +8,7 @@ set :application, 'yii-application'
 
 # Define where can Capistrano access the source repository
 # set :repo_url, 'https://github.com/[user name]/[application name].git'
-set :scm, :git
+#set :scm, :git
 set :repo_url, 'https://github.com/chakAs3/yii-application.git'
 
 # Define where to put your application code
