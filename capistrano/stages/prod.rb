@@ -23,7 +23,7 @@ namespace :system do
         end
       end
     end    
-desc "Install Composer"
+    desc "Install Composer"
     task :install_composer do
       on roles(:app) do
         within shared_path  do
@@ -31,10 +31,10 @@ desc "Install Composer"
         end
       end
     end
-desc "Composer install "
+    desc "Composer install "
     task :composer_install do
       on roles(:app) do
-        within shared_path  do
+        within release_path  do
             execute "php #{shared_path}/composer.phar global require \"fxp/composer-asset-plugin:^1.4.2\" "
             execute "php #{shared_path}/composer.phar update "
         end
