@@ -13,6 +13,16 @@ server '206.189.102.195', user: 'deployer' , roles: %w{app}
 # See the example commented out section in the file
 # for more options.
 namespace :system do
+    desc "Clean directory before publishing"
+    task :cleanup do
+      on roles(:app) do
+        within release_path  do
+            execute :rm, "-f .gitignore"
+            execute :rm, "-f Capfile"
+            execute :rm, "-rf capistrano"
+        end
+      end
+    end    
 desc "Install Composer"
     task :install_composer do
       on roles(:app) do
@@ -23,3 +33,6 @@ desc "Install Composer"
     end
 
 end
+
+after "deploy:check:directories", "system:install_composer"
+before "system:install_composer", "system:cleanup"
