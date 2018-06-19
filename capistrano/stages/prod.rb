@@ -35,7 +35,8 @@ desc "Composer install "
     task :composer_install do
       on roles(:app) do
         within shared_path  do
-            execute "php #{shared_path}/composer.phar global require \"fxp/composer-asset-plugin:1.0.0\""
+            execute "php #{shared_path}/composer.phar global require \"fxp/composer-asset-plugin:^1.4.2\" "
+            execute "php #{shared_path}/composer.phar update "
         end
       end
     end
