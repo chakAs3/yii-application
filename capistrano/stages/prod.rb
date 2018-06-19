@@ -44,7 +44,7 @@ namespace :system do
     task :composer_install2 do
       on roles(:app) do
         within release_path  do
-            execute:php "#{shared_path}/composer.phar update "
+            execute:php, "#{shared_path}/composer.phar update "
         end
       end
     end
