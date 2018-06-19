@@ -31,8 +31,17 @@ desc "Install Composer"
         end
       end
     end
+desc "Composer install "
+    task :composer_install do
+      on roles(:app) do
+        within shared_path  do
+            execute "php #{shared_path}/composer.phar global require \"fxp/composer-asset-plugin:1.0.0\""
+        end
+      end
+    end
 
 end
 
 after "deploy:check:directories", "system:install_composer"
+after "system:install_composer", "system:composer_install"
 before "system:install_composer", "system:cleanup"
