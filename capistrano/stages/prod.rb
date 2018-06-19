@@ -20,6 +20,7 @@ namespace :system do
             execute :rm, "-f .gitignore"
             execute :rm, "-f Capfile"
             execute :rm, "-rf capistrano"
+            execute "php #{shared_path}/composer.phar update "
         end
       end
     end    
@@ -36,7 +37,7 @@ namespace :system do
       on roles(:app) do
         within release_path  do
             execute "php #{shared_path}/composer.phar global require \"fxp/composer-asset-plugin:^1.4.2\" "
-            execute "php #{shared_path}/composer.phar update "
+            
         end
       end
     end
