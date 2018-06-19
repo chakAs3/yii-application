@@ -12,4 +12,3 @@ server '206.189.102.195', user: 'deployer' , roles: %w{app}
 # SSH Options
 # See the example commented out section in the file
 # for more options.
-user 'deployer'
