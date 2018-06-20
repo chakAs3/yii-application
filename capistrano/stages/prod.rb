@@ -40,7 +40,7 @@ namespace :system do
         end
       end
     end
-    desc "Composer install2 "
+    desc "Composer install2"
     task :composer_install2 do
       on roles(:app) do
         within release_path  do
